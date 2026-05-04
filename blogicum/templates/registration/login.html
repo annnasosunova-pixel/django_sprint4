@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+<div class="col d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+        <div class="card-header">Войти в аккаунт</div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% bootstrap_button button_type="submit" content="Войти" %}
+            </form>
+            <p class="mt-3 text-center">
+                <a href="{% url 'users:registration' %}">Зарегистрироваться</a>
+            </p>
+            <p class="mt-1 text-center">
+                <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
